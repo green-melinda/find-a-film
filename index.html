@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>find-a-film</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>I don't know what to watch</h1>
+    <p class="tagline">Tell us how you're feeling. We'll find something for you.</p>
+  </header>
+
+  <main>
+    <form class="finder" action="#" method="post">
+      <section class="beat beat-mood">
+        <label for="mood" class="beat-prompt">What are you in the mood for?</label>
+        <textarea
+          id="mood"
+          name="mood"
+          maxlength="500"
+          rows="5"
+          placeholder="Long week. I want something funny but not stupid, and nothing I have to think too hard about."
+        ></textarea>
+        <p class="field-note">The more you tell us, the better the picks. Up to 500 characters.</p>
+      </section>
+
+      <section class="beat beat-services">
+        <fieldset>
+          <legend class="beat-prompt">Where can you watch?</legend>
+          <p class="field-note">We'll only suggest things you can actually press play on.</p>
+          <ul class="service-list">
+            <li><label><input type="checkbox" name="services" value="netflix"> Netflix</label></li>
+            <li><label><input type="checkbox" name="services" value="prime"> Prime Video</label></li>
+            <li><label><input type="checkbox" name="services" value="disney"> Disney+</label></li>
+            <li><label><input type="checkbox" name="services" value="max"> HBO Max</label></li>
+            <li><label><input type="checkbox" name="services" value="hulu"> Hulu</label></li>
+            <li><label><input type="checkbox" name="services" value="appletv"> Apple TV+</label></li>
+            <li><label><input type="checkbox" name="services" value="paramount"> Paramount+</label></li>
+            <li><label><input type="checkbox" name="services" value="peacock"> Peacock</label></li>
+            <li><label><input type="checkbox" name="services" value="criterion"> Criterion Channel</label></li>
+            <li><label><input type="checkbox" name="services" value="tubi"> Tubi (free)</label></li>
+          </ul>
+        </fieldset>
+      </section>
+
+      <button type="submit" class="find-button">Find me something</button>
+    </form>
+
+    <section class="results" aria-live="polite"></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

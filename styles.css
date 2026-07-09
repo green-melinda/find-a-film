@@ -1,0 +1,274 @@
+/* find-a-film — static skeleton styles
+   Content-first: type does the structure, color stays out of the way. */
+
+:root {
+  --ink: #1f2328;
+  --ink-soft: #57606a;
+  --paper: #faf9f7;
+  --card: #ffffff;
+  --line: #d8d5d0;
+  --accent: #4a5d23;      /* olive — calm, not streaming-service neon */
+  --accent-ink: #ffffff;
+  --badge-bg: #eef0e8;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+.site-header,
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  padding-top: 3rem;
+  padding-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.tagline {
+  color: var(--ink-soft);
+  margin: 0.35rem 0 0;
+}
+
+/* --- Beats --- */
+
+.beat {
+  margin-top: 2.5rem;
+}
+
+.beat-prompt {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+
+.field-note {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+}
+
+/* Beat 1 — mood */
+
+textarea {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  resize: vertical;
+}
+
+textarea::placeholder {
+  color: #9aa1a9;
+}
+
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Beat 2 — services */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.beat-services .field-note {
+  margin: 0 0 1rem;
+}
+
+.service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.4rem 1rem;
+}
+
+.service-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.service-list input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--accent);
+}
+
+/* The button */
+
+.find-button {
+  margin-top: 2.25rem;
+  width: 100%;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+}
+
+.find-button:hover {
+  filter: brightness(1.08);
+}
+
+.find-button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* --- Beat 3: result card --- */
+
+.results {
+  margin-top: 3.5rem;
+  padding-bottom: 4rem;
+}
+
+.results-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.results-heading {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.start-over {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.start-over:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.results-note {
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.result-card + .result-card {
+  margin-top: 1rem;
+}
+
+.find-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.results-section-heading {
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 2rem 0 0.75rem;
+}
+
+.result-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.result-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-poster {
+  width: 5.75rem;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .result-poster {
+    width: 4.25rem;
+  }
+}
+
+.result-title {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.result-meta {
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.result-why {
+  margin: 0.7rem 0 0;
+}
+
+.result-availability {
+  margin: 0.9rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.service-badge {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+}
