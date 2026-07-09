@@ -1,6 +1,8 @@
-# find-a-film
+# I don't know what to watch
 
-A mood-based movie/TV finder. You write a paragraph about how you're feeling, pick your
+So often I turn on my TV without knowing what to watch. The watchlists I've created don't always mesh with whatever I'm feeling, so I've built an app that uses what I'm feeling to suggest films and tv shows. 
+
+It's easy. You write a paragraph about how you're feeling, pick your
 streaming services, and get back titles that fit the mood — verified to actually be
 streamable on those services.
 
