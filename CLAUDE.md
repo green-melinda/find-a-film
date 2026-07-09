@@ -41,8 +41,13 @@ for reference).
   input mechanic.
 - **Results are sectioned into Movies / TV shows** — "two hours or one episode?" is the
   first fork in the decision, so it gets structure, not a badge.
-- **One accent color** (olive), used only for focus rings, the submit button, and the
-  "Start over" link. Type does the hierarchy.
+- **Styling is a Civic Ink adaptation** (2026-07-08, supersedes the original olive
+  decision). Tokens live in `public/tokens.css`: layer 1 is Civic Ink v1.5 primitives
+  verbatim (pinned to working-with-me @ dfc3239), layer 2 is `--ff-*` theme aliases —
+  `styles.css` references only the theme layer. Cobalt is the interactive color (button,
+  focus rings, "Start over"); Acid appears exactly once, as the checked state on service
+  checkboxes. Type does the hierarchy: Playfair Display for the h1, Instrument Sans
+  everywhere else. 4px radius, 8pt spacing grid, no exceptions.
 - **No dark patterns, no engagement mechanics.** The app's job is to end the session
   with a decision, not extend it.
 

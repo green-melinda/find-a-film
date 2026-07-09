@@ -1,17 +1,8 @@
-/* find-a-film — static skeleton styles
-   Content-first: type does the structure, color stays out of the way. */
-
-:root {
-  --ink: #1f2328;
-  --ink-soft: #57606a;
-  --paper: #faf9f7;
-  --card: #ffffff;
-  --line: #d8d5d0;
-  --accent: #4a5d23;      /* olive — calm, not streaming-service neon */
-  --accent-ink: #ffffff;
-  --badge-bg: #eef0e8;
-  --radius: 10px;
-}
+/* find-a-film — Civic Ink adaptation (tokens v0.2)
+   Content-first: type does the structure, color stays out of the way.
+   All values come from the --ff-* theme layer in tokens.css. This file
+   references no raw colors, sizes, or radii — if a value is missing,
+   add it to the theme layer, don't hardcode it here. */
 
 * {
   box-sizing: border-box;
@@ -19,54 +10,58 @@
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.55;
+  background: var(--ff-page);
+  color: var(--ff-text);
+  font-family: var(--ff-body-font);
+  font-size: var(--ff-body-size);
+  line-height: var(--ff-body-leading);
 }
 
 .site-header,
 main {
-  max-width: 40rem;
+  max-width: var(--ff-measure);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 var(--ff-gap);
 }
 
 .site-header {
-  padding-top: 3rem;
-  padding-bottom: 0.5rem;
+  padding-top: var(--ff-page-top);
+  padding-bottom: var(--ff-gap-tight);
 }
 
 h1 {
-  font-size: 1.6rem;
-  letter-spacing: -0.01em;
+  font-family: var(--ff-h1-font);
+  font-size: var(--ff-h1-size);
+  font-weight: 500;
+  line-height: var(--ff-h1-leading);
+  letter-spacing: var(--ff-h1-tracking);
   margin: 0;
 }
 
 .tagline {
-  color: var(--ink-soft);
-  margin: 0.35rem 0 0;
+  color: var(--ff-text-soft);
+  margin: var(--ff-gap-tight) 0 0;
 }
 
 /* --- Beats --- */
 
 .beat {
-  margin-top: 2.5rem;
+  margin-top: var(--ff-gap-beat);
 }
 
 .beat-prompt {
   display: block;
-  font-size: 1.35rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.6rem;
+  font-size: var(--ff-prompt-size);
+  font-weight: 600;
+  letter-spacing: var(--ff-h1-tracking);
+  margin-bottom: var(--ff-gap-tight);
   padding: 0;
 }
 
 .field-note {
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-  margin: 0.5rem 0 0;
+  color: var(--ff-text-soft);
+  font-size: var(--ff-meta-size);
+  margin: var(--ff-gap-tight) 0 0;
 }
 
 /* Beat 1 — mood */
@@ -75,20 +70,20 @@ textarea {
   width: 100%;
   font: inherit;
   color: inherit;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 0.9rem 1rem;
+  background: var(--ff-surface);
+  border: var(--ff-input-border);
+  border-radius: var(--ff-radius);
+  padding: var(--ff-gap);
   resize: vertical;
 }
 
 textarea::placeholder {
-  color: #9aa1a9;
+  color: var(--ff-text-soft);
 }
 
 textarea:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline: var(--ff-focus-ring);
+  outline-offset: var(--ff-focus-offset);
 }
 
 /* Beat 2 — services */
@@ -100,7 +95,7 @@ fieldset {
 }
 
 .beat-services .field-note {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--ff-gap);
 }
 
 .service-list {
@@ -109,76 +104,87 @@ fieldset {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-  gap: 0.4rem 1rem;
+  gap: var(--ff-gap-tight) var(--ff-gap);
 }
 
 .service-list label {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.45rem 0.25rem;
-  border-radius: 6px;
+  gap: var(--ff-gap-tight);
+  padding: var(--ff-gap-tight) var(--ff-gap-hairline);
+  border-radius: var(--ff-radius);
   cursor: pointer;
 }
 
 .service-list input[type="checkbox"] {
-  width: 1.1rem;
-  height: 1.1rem;
-  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ff-selected); /* Acid's one job: the moment of choice */
+}
+
+.service-list input[type="checkbox"]:focus-visible {
+  outline: var(--ff-focus-ring);
+  outline-offset: var(--ff-focus-offset);
 }
 
 /* The button */
 
 .find-button {
-  margin-top: 2.25rem;
+  margin-top: var(--ff-gap-component);
   width: 100%;
   font: inherit;
-  font-size: 1.05rem;
-  font-weight: 650;
-  color: var(--accent-ink);
-  background: var(--accent);
+  font-weight: 600;
+  color: var(--ff-interactive-ink);
+  background: var(--ff-interactive);
   border: 0;
-  border-radius: var(--radius);
-  padding: 0.9rem 1rem;
+  border-radius: var(--ff-radius);
+  padding: var(--ff-gap);
   cursor: pointer;
+  transition: text-underline-offset var(--duration-fast) var(--ease-out);
 }
 
 .find-button:hover {
-  filter: brightness(1.08);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .find-button:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 2px;
+  outline: var(--ff-focus-ring);
+  outline-offset: var(--ff-focus-offset);
+}
+
+.find-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 /* --- Beat 3: result card --- */
 
 .results {
-  margin-top: 3.5rem;
-  padding-bottom: 4rem;
+  margin-top: var(--ff-gap-section);
+  padding-bottom: var(--ff-gap-section);
 }
 
 .results-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
+  gap: var(--ff-gap);
+  margin-bottom: var(--ff-gap-tight);
 }
 
 .results-heading {
-  color: var(--ink-soft);
-  font-size: 0.85rem;
+  color: var(--ff-text-soft);
+  font-size: var(--ff-label-size);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--ff-label-tracking);
   margin: 0;
 }
 
 .start-over {
   font: inherit;
-  font-size: 0.9rem;
-  color: var(--accent);
+  font-size: var(--ff-meta-size);
+  color: var(--ff-link);
   background: none;
   border: 0;
   padding: 0;
@@ -188,39 +194,34 @@ fieldset {
 }
 
 .start-over:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: var(--ff-focus-ring);
+  outline-offset: var(--ff-focus-offset);
 }
 
 .results-note {
-  color: var(--ink-soft);
+  color: var(--ff-text-soft);
   margin: 0;
 }
 
-.result-card + .result-card {
-  margin-top: 1rem;
-}
-
-.find-button:disabled {
-  opacity: 0.7;
-  cursor: wait;
-}
-
 .results-section-heading {
-  font-size: 1.15rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  margin: 2rem 0 0.75rem;
+  font-size: var(--ff-prompt-size);
+  font-weight: 600;
+  letter-spacing: var(--ff-h1-tracking);
+  margin: var(--ff-gap-component) 0 var(--ff-gap-tight);
 }
 
 .result-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.4rem;
+  background: var(--ff-surface);
+  border: var(--ff-rule);
+  border-radius: var(--ff-radius);
+  padding: var(--ff-pad-card);
   display: flex;
-  gap: 1.25rem;
+  gap: var(--ff-gap);
   align-items: flex-start;
+}
+
+.result-card + .result-card {
+  margin-top: var(--ff-gap);
 }
 
 .result-body {
@@ -229,46 +230,57 @@ fieldset {
 }
 
 .result-poster {
-  width: 5.75rem;
+  width: 92px;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: var(--ff-radius);
   flex-shrink: 0;
 }
 
 @media (max-width: 480px) {
   .result-poster {
-    width: 4.25rem;
+    width: 68px;
   }
 }
 
 .result-title {
-  font-size: 1.15rem;
+  font-size: var(--ff-prompt-size);
+  font-weight: 600;
   margin: 0;
 }
 
 .result-meta {
-  color: var(--ink-soft);
+  color: var(--ff-text-soft);
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: var(--ff-meta-size);
 }
 
 .result-why {
-  margin: 0.7rem 0 0;
+  margin: var(--ff-gap-tight) 0 0;
 }
 
 .result-availability {
-  margin: 0.9rem 0 0;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
+  margin: var(--ff-gap-tight) 0 0;
+  color: var(--ff-text-soft);
+  font-size: var(--ff-meta-size);
 }
 
 .service-badge {
   display: inline-block;
-  background: var(--badge-bg);
-  color: var(--ink);
-  border-radius: 999px;
-  padding: 0.15rem 0.7rem;
-  font-size: 0.85rem;
-  margin-right: 0.25rem;
+  background: none;
+  border: var(--ff-rule);
+  color: var(--ff-text);
+  border-radius: var(--ff-radius-badge);
+  padding: var(--ff-gap-hairline) var(--ff-gap-tight);
+  font-size: var(--ff-label-size);
+  letter-spacing: var(--ff-label-tracking);
+  margin-right: var(--ff-gap-hairline);
+}
+
+/* Motion is opt-in enhancement only */
+
+@media (prefers-reduced-motion: reduce) {
+  .find-button {
+    transition: none;
+  }
 }
