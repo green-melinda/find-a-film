@@ -36,6 +36,7 @@ h1 {
   font-weight: var(--ff-h1-weight);
   line-height: var(--ff-h1-leading);
   letter-spacing: var(--ff-h1-tracking);
+  text-wrap: balance;
   margin: 0;
 }
 
