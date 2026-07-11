@@ -1,8 +1,9 @@
-/* find-a-film — Civic Ink adaptation (tokens v0.2)
-   Content-first: type does the structure, color stays out of the way.
-   All values come from the --ff-* theme layer in tokens.css. This file
-   references no raw colors, sizes, or radii — if a value is missing,
-   add it to the theme layer, don't hardcode it here. */
+/* find-a-film — Blue Hour (tokens v0.3)
+   Cinematic minimalism: cool surfaces, warm punctuation. Type does the
+   structure; the three accents each have one job. All values come from
+   the --ff-* theme layer in tokens.css — this file references no raw
+   colors, sizes, or radii. If a value is missing, add it to the theme
+   layer, don't hardcode it here. */
 
 * {
   box-sizing: border-box;
@@ -30,12 +31,18 @@ main {
 }
 
 h1 {
-  font-family: var(--ff-h1-font);
+  font-family: var(--ff-display-font);
   font-size: var(--ff-h1-size);
-  font-weight: 500;
+  font-weight: var(--ff-h1-weight);
   line-height: var(--ff-h1-leading);
   letter-spacing: var(--ff-h1-tracking);
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: var(--ff-h1-size-wide); /* 56px — the Syne ceiling */
+  }
 }
 
 .tagline {
@@ -51,8 +58,10 @@ h1 {
 
 .beat-prompt {
   display: block;
+  font-family: var(--ff-display-font);
   font-size: var(--ff-prompt-size);
-  font-weight: 600;
+  font-weight: var(--ff-h1-weight);
+  line-height: var(--ff-h1-leading);
   letter-spacing: var(--ff-h1-tracking);
   margin-bottom: var(--ff-gap-tight);
   padding: 0;
@@ -64,7 +73,8 @@ h1 {
   margin: var(--ff-gap-tight) 0 0;
 }
 
-/* Beat 1 — mood */
+/* Beat 1 — mood. "The text input for mood should dominate the
+   viewport — it's the entire interaction model." */
 
 textarea {
   width: 100%;
@@ -82,7 +92,7 @@ textarea::placeholder {
 }
 
 textarea:focus-visible {
-  outline: var(--ff-focus-ring);
+  outline: var(--ff-focus-ring-form); /* Periwinkle — an informational moment */
   outline-offset: var(--ff-focus-offset);
 }
 
@@ -111,6 +121,7 @@ fieldset {
   display: flex;
   align-items: center;
   gap: var(--ff-gap-tight);
+  min-height: var(--ff-touch-min);
   padding: var(--ff-gap-tight) var(--ff-gap-hairline);
   border-radius: var(--ff-radius);
   cursor: pointer;
@@ -119,33 +130,40 @@ fieldset {
 .service-list input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  accent-color: var(--ff-selected); /* Acid's one job: the moment of choice */
+  accent-color: var(--ff-selected); /* Golden — the moment of choice */
 }
 
 .service-list input[type="checkbox"]:focus-visible {
-  outline: var(--ff-focus-ring);
+  outline: var(--ff-focus-ring-form);
   outline-offset: var(--ff-focus-offset);
 }
 
-/* The button */
+/* The button — .btn-primary: ink at rest, Golden on hover.
+   Golden is earned; this is its one dominant use on the screen. */
 
 .find-button {
   margin-top: var(--ff-gap-component);
   width: 100%;
-  font: inherit;
+  min-height: var(--ff-touch-min);
+  font-family: var(--ff-body-font);
+  font-size: var(--ff-meta-size);
   font-weight: 600;
-  color: var(--ff-interactive-ink);
-  background: var(--ff-interactive);
-  border: 0;
+  letter-spacing: var(--ff-label-tracking);
+  text-transform: uppercase;
+  color: var(--ff-btn-ink);
+  background: var(--ff-btn-bg);
+  border: var(--ff-btn-border);
   border-radius: var(--ff-radius);
-  padding: var(--ff-gap);
+  padding: var(--ff-gap-tight) var(--ff-pad-card);
   cursor: pointer;
-  transition: text-underline-offset var(--duration-fast) var(--ease-out);
+  transition: background var(--duration-fast) var(--ease-sharp),
+              color var(--duration-fast) var(--ease-sharp);
 }
 
 .find-button:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  background: var(--ff-btn-hover-bg);
+  color: var(--ff-btn-hover-ink);
+  border-color: var(--ff-btn-hover-bg);
 }
 
 .find-button:focus-visible {
@@ -154,11 +172,12 @@ fieldset {
 }
 
 .find-button:disabled {
-  opacity: 0.7;
-  cursor: wait;
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-/* --- Beat 3: result card --- */
+/* --- Beat 3: results --- */
 
 .results {
   margin-top: var(--ff-gap-section);
@@ -173,14 +192,17 @@ fieldset {
   margin-bottom: var(--ff-gap-tight);
 }
 
+/* Eyebrow label */
 .results-heading {
   color: var(--ff-text-soft);
   font-size: var(--ff-label-size);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: var(--ff-label-tracking);
+  letter-spacing: var(--ff-eyebrow-tracking);
   margin: 0;
 }
 
+/* Link — Periwinkle, never decorated at rest */
 .start-over {
   font: inherit;
   font-size: var(--ff-meta-size);
@@ -189,6 +211,11 @@ fieldset {
   border: 0;
   padding: 0;
   cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration-color var(--duration-fast) var(--ease-sharp);
+}
+
+.start-over:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -203,16 +230,27 @@ fieldset {
   margin: 0;
 }
 
-.results-section-heading {
-  font-size: var(--ff-prompt-size);
-  font-weight: 600;
-  letter-spacing: var(--ff-h1-tracking);
-  margin: var(--ff-gap-component) 0 var(--ff-gap-tight);
+/* Errors are honest — and Alarm is theirs alone */
+.results-note--error {
+  color: var(--ff-error);
 }
 
+.results-section-heading {
+  font-family: var(--ff-display-font);
+  font-size: var(--ff-prompt-size);
+  font-weight: var(--ff-h1-weight);
+  line-height: var(--ff-h1-leading);
+  letter-spacing: var(--ff-h1-tracking);
+  margin: var(--ff-gap-component) 0 var(--ff-gap);
+}
+
+/* Mood result card — the app's primary content surface. Warm-tinted
+   against the twilight, Peach accent: this is the emotional layer. */
+
 .result-card {
-  background: var(--ff-surface);
-  border: var(--ff-rule);
+  background: var(--ff-card-surface);
+  border: 0;
+  border-left: var(--ff-card-accent);
   border-radius: var(--ff-radius);
   padding: var(--ff-pad-card);
   display: flex;
@@ -244,7 +282,7 @@ fieldset {
 }
 
 .result-title {
-  font-size: var(--ff-prompt-size);
+  font-size: var(--ff-title-size);
   font-weight: 600;
   margin: 0;
 }
@@ -259,12 +297,19 @@ fieldset {
   margin: var(--ff-gap-tight) 0 0;
 }
 
+/* The emotional lead-in carries the accent that names it */
+.result-why strong {
+  color: var(--ff-mood);
+}
+
 .result-availability {
-  margin: var(--ff-gap-tight) 0 0;
+  margin: var(--ff-gap) 0 0;
   color: var(--ff-text-soft);
   font-size: var(--ff-meta-size);
 }
 
+/* Neutral tag — thin border, rectangle. Not periwinkle: the card
+   already carries Peach, and accents never share a component. */
 .service-badge {
   display: inline-block;
   background: none;
@@ -273,14 +318,17 @@ fieldset {
   border-radius: var(--ff-radius-badge);
   padding: var(--ff-gap-hairline) var(--ff-gap-tight);
   font-size: var(--ff-label-size);
+  font-weight: 600;
+  text-transform: uppercase;
   letter-spacing: var(--ff-label-tracking);
   margin-right: var(--ff-gap-hairline);
 }
 
-/* Motion is opt-in enhancement only */
+/* Motion communicates or it doesn't exist */
 
 @media (prefers-reduced-motion: reduce) {
-  .find-button {
-    transition: none;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

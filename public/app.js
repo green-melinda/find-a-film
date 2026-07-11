@@ -67,7 +67,7 @@ form.addEventListener("submit", async (event) => {
     const data = await res.json();
 
     if (!res.ok) {
-      results.innerHTML = `<p class="results-note">${data.error ?? "Something went wrong. Try again in a moment."}</p>`;
+      results.innerHTML = `<p class="results-note results-note--error">${data.error ?? "Something went wrong. Try again in a moment."}</p>`;
       return;
     }
     if (data.results.length === 0) {
@@ -85,7 +85,7 @@ form.addEventListener("submit", async (event) => {
       section("TV shows", shows);
     results.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch {
-    results.innerHTML = `<p class="results-note">Couldn't reach the server. Check your connection and try again.</p>`;
+    results.innerHTML = `<p class="results-note results-note--error">Couldn't reach the server. Check your connection and try again.</p>`;
   } finally {
     button.disabled = false;
     button.textContent = "Find me something";

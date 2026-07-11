@@ -1,48 +1,52 @@
 /*
- * find-a-film — design tokens v0.2
+ * find-a-film — design tokens v0.3 "Blue Hour"
  *
- * Civic Ink v1.5 as base, adapted for find-a-film. Supersedes v0.1
- * (a standalone extraction of the app's as-deployed values — rejected:
- * it enshrined everything Civic Ink forbids; see field-notes
- * docs/rejections.md, 2026-07-08).
+ * Source of truth: design-system.md v0.1 (Blue Hour · Cinematic
+ * Minimalism · Light + Dark). A FORK of Civic Ink v1.5, not a branch —
+ * structural rules (8pt grid, borders, radii, a11y) carry over;
+ * palette, typography, and the third accent role (Peach) are its own.
+ * Supersedes v0.2 (Civic Ink adaptation, 2026-07-08).
  *
- * Architecture, two layers:
- *   1. PRIMITIVES — Civic Ink v1.5, verbatim. Snapshot of
- *      working-with-me/design-system/tokens.css @ commit dfc3239,
- *      same pin as the Field Notes site. Do not edit values here;
- *      change the source, then re-snapshot.
+ * Architecture, two layers (unchanged from v0.2):
+ *   1. PRIMITIVES — Blue Hour values, verbatim from design-system.md.
+ *      Do not edit values here; change design-system.md, then re-sync.
  *   2. THEME — --ff-* semantic aliases. The app's stylesheet references
  *      ONLY this layer. Themes may remap; they may not invent values.
  *
- * Adaptation decisions (Melinda, 2026-07-08):
- *   - Olive (#4a5d23) is retired. Cobalt is the interactive color.
- *   - Acid appears once, small: the checked state on service
- *     checkboxes. One job per page.
- *   - 10px/6px radii → 4px. Ad-hoc rem spacing → 8pt grid.
- *   - System font stack (Arial-prone) → Playfair Display + Instrument
- *     Sans. Requires loading the faces; toy pays the page-weight cost
- *     of membership.
+ * Adaptation decisions (2026-07-10):
+ *   - Three accents, three jobs: Golden = action/selected, Periwinkle =
+ *     links/info, Peach = mood/recommendation. Never two on one element.
+ *   - Result cards take the mood-card pattern: warm-tinted surface,
+ *     4px Peach left border, no outer border.
+ *   - Service badges stay NEUTRAL tags (thin ink border): periwinkle
+ *     tags inside a peach card would put two accents on one component.
+ *   - Form focus = Periwinkle (per Form Elements); button/link focus =
+ *     Golden (per Interaction States).
+ *   - Dark mode is primary — this is a film app, it lives at night.
+ *     Light :root + dark override matches the spec's own CSS blocks.
  */
 
 :root {
-  /* ============ LAYER 1 — Civic Ink v1.5 primitives ============ */
+  /* ============ LAYER 1 — Blue Hour primitives ============ */
 
-  /* Color — Civic Ink light palette */
-  --color-ink:        #0D0D0D;
-  --color-paper:      #F5F0E8;
-  --color-acid:       #D6E000;
-  --color-cobalt:     #1B4FD8;
-  --color-warm-rule:  #E8E0D0;
-  --color-charcoal:   #2A2A2A;
-  --color-alarm:      #DC2626;
-  --color-alarm-bg:   #FFF5F5;
+  /* Color — light mode "Screen" */
+  --color-ink:         #0E1228;   /* Twilight */
+  --color-paper:       #F3F1F6;   /* Screen */
+  --color-golden:      #C49A1C;
+  --color-periwinkle:  #4A55A0;
+  --color-peach:       #B07060;
+  --color-rule:        #D8D5E2;   /* Haze */
+  --color-muted:       #555775;   /* Dusk */
+  --color-alarm:       #DC2626;
+  --color-alarm-bg:    #FDF5F5;
+  --color-mood-surface:#F5EEEB;   /* warm-tinted card surface (light) */
 
-  /* Type scale — display (Playfair Display) */
-  --text-display-xl:  64px;
+  /* Type scale — display (Syne) */
+  --text-display-xl:  56px;   /* ceiling — Syne runs large */
   --text-display-lg:  40px;
-  --text-display-md:  32px;
+  --text-display-md:  28px;
 
-  /* Type scale — body (Instrument Sans) */
+  /* Type scale — body (Figtree) */
   --text-body-xl:     24px;
   --text-body-lg:     20px;
   --text-body-md:     16px;
@@ -50,19 +54,19 @@
   --text-body-xs:     12px;
 
   /* Line height */
-  --leading-tight:    1.1;
+  --leading-tight:    1.08;
   --leading-normal:   1.5;
   --leading-loose:    1.75;
 
   /* Letter spacing */
-  --tracking-tight:  -0.02em;
+  --tracking-tight:  -0.03em;
   --tracking-normal:  0;
   --tracking-wide:    0.08em;
   --tracking-wider:   0.15em;
 
   /* Font stacks */
-  --font-display: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
-  --font-body:    'Instrument Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --font-display: 'Syne', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --font-body:    'Figtree', 'Helvetica Neue', 'Helvetica', sans-serif;
   --font-mono:    'Courier New', 'Courier', monospace;
 
   /* Spacing — 8pt grid */
@@ -80,12 +84,13 @@
   --container-narrow:  720px;
 
   /* Borders & rules */
-  --border-thin:        0.5px solid var(--color-ink);
-  --border-mid:           1px solid var(--color-ink);
-  --border-heavy:         2px solid var(--color-ink);
-  --border-rule:          1px solid var(--color-warm-rule);
-  --border-accent-acid:   4px solid var(--color-acid);
-  --border-accent-cobalt: 4px solid var(--color-cobalt);
+  --border-thin:          0.5px solid var(--color-ink);
+  --border-mid:             1px solid var(--color-ink);
+  --border-heavy:           2px solid var(--color-ink);
+  --border-rule:            1px solid var(--color-rule);
+  --border-accent-golden:   4px solid var(--color-golden);
+  --border-accent-peri:     4px solid var(--color-periwinkle);
+  --border-accent-peach:    4px solid var(--color-peach);
 
   /* Border radius — two settings only: subtle or pill */
   --radius-sm:   4px;
@@ -97,78 +102,103 @@
   --duration-slow:  350ms;
   --ease-sharp:     cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out:       cubic-bezier(0, 0, 0.2, 1);
+}
 
+/* Dark mode "Twilight" — the primary mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink:         #E8E4F0;   /* Off-white */
+    --color-paper:       #0E1228;   /* Twilight */
+    --color-golden:      #DBAA20;
+    --color-periwinkle:  #7B8FD4;
+    --color-peach:       #D4907A;
+    --color-rule:        #252845;   /* Deep Blue */
+    --color-muted:       #8B8DB0;   /* Dusk (dark value — do not swap) */
+    --color-alarm:       #F87171;
+    --color-alarm-bg:    #1C0A0A;
+    --color-mood-surface:#2A1E24;   /* warm-tinted card surface (dark) */
+  }
+}
+
+:root {
   /* ============ LAYER 2 — find-a-film theme (--ff-*) ============
      The app's stylesheet uses these and only these. */
 
-  /* Surfaces. No white cards: Civic Ink builds structure with
-     hairlines on paper, not elevation. */
+  /* Surfaces */
   --ff-page:           var(--color-paper);
   --ff-surface:        var(--color-paper);
   --ff-rule:           var(--border-rule);
 
   /* Text */
   --ff-text:           var(--color-ink);
-  --ff-text-soft:      var(--color-charcoal);
+  --ff-text-soft:      var(--color-muted);
 
-  /* Inputs — 1px ink border; paper-on-paper needs the line to work */
+  /* Inputs */
   --ff-input-border:   var(--border-mid);
 
-  /* Interactive — olive's successor */
-  --ff-interactive:     var(--color-cobalt);
-  --ff-interactive-ink: var(--color-paper);
-  --ff-link:            var(--color-cobalt);
+  /* Three accents, three jobs */
+  --ff-action:         var(--color-golden);      /* CTAs, selected states */
+  --ff-link:           var(--color-periwinkle);  /* links, info */
+  --ff-mood:           var(--color-peach);       /* feeling, recommendations */
 
-  /* Acid's one job: the checked state on service checkboxes */
-  --ff-selected:       var(--color-acid);
+  /* Button — .btn-primary pattern: ink at rest, Golden on hover */
+  --ff-btn-bg:         var(--color-ink);
+  --ff-btn-ink:        var(--color-paper);
+  --ff-btn-border:     var(--border-mid);
+  --ff-btn-hover-bg:   var(--color-golden);
+  --ff-btn-hover-ink:  #0E1228;                  /* Ink-on-Golden in both modes */
 
-  /* Focus — Cobalt, never Acid (acid-on-paper ≈ 1.5:1, fails 3:1) */
-  --ff-focus-ring:     2px solid var(--color-cobalt);
-  --ff-focus-offset:   2px;
+  /* Selected checkboxes — Golden (active state) */
+  --ff-selected:       var(--color-golden);
 
-  /* Errors — Civic Ink voice: explain, fix, never apologize */
+  /* Focus — Golden for buttons/links, Periwinkle for form fields */
+  --ff-focus-ring:      2px solid var(--color-golden);
+  --ff-focus-ring-form: 2px solid var(--color-periwinkle);
+  --ff-focus-offset:    2px;
+
+  /* Mood card — the app's primary content surface */
+  --ff-card-surface:   var(--color-mood-surface);
+  --ff-card-accent:    var(--border-accent-peach);
+
+  /* Errors — Alarm is semantic: errors only */
   --ff-error:          var(--color-alarm);
   --ff-error-bg:       var(--color-alarm-bg);
 
   /* Type roles */
   --ff-body-font:      var(--font-body);
-  --ff-h1-font:        var(--font-display);
-  --ff-h1-size:        var(--text-display-md);   /* 32px — h1 in a 720px column */
+  --ff-display-font:   var(--font-display);
+  --ff-h1-size:        var(--text-display-lg);   /* 40px; 56px at ≥768px */
+  --ff-h1-size-wide:   var(--text-display-xl);
+  --ff-h1-weight:      700;                      /* Syne display weight — never 800 */
   --ff-h1-leading:     var(--leading-tight);
   --ff-h1-tracking:    var(--tracking-tight);
 
-  --ff-prompt-font:    var(--font-body);
-  --ff-prompt-size:    var(--text-body-lg);      /* beat prompts, section heads */
+  --ff-prompt-size:    var(--text-display-md);   /* beat prompts, section heads — Syne */
+  --ff-title-size:     var(--text-body-lg);      /* film titles — Figtree */
   --ff-body-size:      var(--text-body-md);
-  --ff-meta-size:      var(--text-body-sm);      /* notes, meta, availability */
-  --ff-label-size:     var(--text-body-xs);      /* uppercase eyebrows, badges */
+  --ff-meta-size:      var(--text-body-sm);
+  --ff-label-size:     var(--text-body-xs);      /* tags, eyebrows */
   --ff-label-tracking: var(--tracking-wide);
+  --ff-eyebrow-tracking: var(--tracking-wider);
   --ff-body-leading:   var(--leading-normal);
 
   /* Shape */
-  --ff-radius:         var(--radius-sm);         /* 4px, everywhere, no exceptions */
-  --ff-radius-badge:   var(--radius-pill);
+  --ff-radius:         var(--radius-sm);         /* 4px; pill is the only other setting */
+  --ff-radius-badge:   var(--radius-sm);         /* tags are rectangles; pills are for mood chips */
 
-  /* Rhythm — replaces v1's 17 ad-hoc rem values */
+  /* Rhythm */
   --ff-gap-hairline:   var(--space-1);
   --ff-gap-tight:      var(--space-2);
   --ff-gap:            var(--space-3);
   --ff-pad-card:       var(--space-4);
   --ff-gap-component:  var(--space-5);
-  --ff-gap-beat:       var(--space-6);           /* between the three beats */
+  --ff-gap-beat:       var(--space-6);
   --ff-gap-section:    var(--space-7);
   --ff-page-top:       var(--space-6);
 
   /* Measure */
-  --ff-measure:        var(--container-narrow);  /* was 40rem; inherits 720px */
-}
+  --ff-measure:        var(--container-narrow);
 
-/*
- * v0.2 open questions (for the restyle, not for this file):
- * 1. v1's type scale had 7 sizes; the theme maps to 5 roles. The three
- *    quiet-text sizes (0.95/0.9/0.85rem) merge into --ff-meta-size.
- * 2. .find-button hover was filter:brightness() — replace with a
- *    tokenized treatment (cobalt + underline, or heavier border) during
- *    the restyle. No computed hovers.
- * 3. Poster thumbnails: 2/3 aspect stays; corner radius goes 4px.
- */
+  /* A11y floor — not on the 8pt grid; it's the WCAG touch-target minimum */
+  --ff-touch-min:      44px;
+}
