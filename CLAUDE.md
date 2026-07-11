@@ -35,10 +35,12 @@ for reference).
 - **Copy is the design.** The page was written as words before any layout. The h1 is the
   user's own thought ("I don't know what to watch"); the textarea placeholder
   demonstrates what a real answer looks like. Plain language throughout; no jargon.
-- **The voice rule (2026-07-10): headings are the user's inner monologue, first person**
-  ("How am I feeling right now?", "Where can I stream?"); the app speaks only in the
-  small helper text beneath them, and it answers — it never instructs. The tagline is
-  the app's reply to the h1, not a command. Don't flip any heading back to second person.
+- **The voice rule (2026-07-10): the headline, tagline, and headings are the user's
+  inner monologue, first person** ("I don't know what to watch" → "Briefly wax
+  philosophical about whatever it is I'm feeling right now" → "How am I feeling right
+  now?", "Where can I stream?"). The app speaks only in the small helper text beneath
+  the headings, and it answers — it never instructs. Don't flip any heading to second
+  person, and don't give the app an imperative line.
 - **The "Why this fits" line is the star of the result card** — above the poster in
   priority. The poster is small and on the right, subordinate. Every other app leads
   with the poster wall; this one leads with the reason, because the written mood is the
