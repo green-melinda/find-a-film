@@ -38,6 +38,8 @@ h1 {
   letter-spacing: var(--ff-h1-tracking);
   text-wrap: balance;
   margin: 0;
+  /* --leading-tight leaves no air under Syne descenders; half-step clears them */
+  padding-bottom: var(--ff-gap-hairline);
 }
 
 @media (min-width: 768px) {
@@ -65,7 +67,7 @@ h1 {
   line-height: var(--ff-h1-leading);
   letter-spacing: var(--ff-h1-tracking);
   margin-bottom: var(--ff-gap-tight);
-  padding: 0;
+  padding: 0 0 var(--ff-gap-hairline);
 }
 
 .field-note {
@@ -243,6 +245,7 @@ fieldset {
   line-height: var(--ff-h1-leading);
   letter-spacing: var(--ff-h1-tracking);
   margin: var(--ff-gap-component) 0 var(--ff-gap);
+  padding-bottom: var(--ff-gap-hairline);
 }
 
 /* Mood result card — the app's primary content surface. Warm-tinted
