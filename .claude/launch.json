@@ -6,6 +6,17 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["server.js"],
       "port": 4173
+    },
+    {
+      "name": "field-notes",
+      "runtimeExecutable": "/Users/greenmelinda/.local/bin/npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "/Users/greenmelinda/Documents/PROJECTS/ai-practice-site"
+      ],
+      "port": 4321
     }
   ]
 }
