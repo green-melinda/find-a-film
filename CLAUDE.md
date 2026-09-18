@@ -71,8 +71,8 @@ The skill is a copy. The source of truth is `.claude/skills/unslop/SKILL.md` in
 [working-with-me](https://github.com/green-melinda/working-with-me). Edit it there, then re-sync
 with `./install.sh /path/to/find-a-film` from that repo. Do not edit the copy in place.
 
-One known conflict: the skill bans em dashes and this file is full of them, along with the app's
-own copy. The ban applies to new writing. Changing the existing voice is a separate decision.
+The em dash ban applies to writing Claude generates. The em dashes already in this file and in
+the app's copy are Melinda's and they stay.
 
 ## Gotchas
 
