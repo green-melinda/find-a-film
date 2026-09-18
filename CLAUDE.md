@@ -73,6 +73,19 @@ repo does not carry a copy. The rules live at `.claude/skills/unslop/SKILL.md` i
 The em dash ban applies to writing Claude generates. The em dashes already in this file and in
 the app's copy are Melinda's and they stay.
 
+## How Melinda works
+
+Full context: https://github.com/green-melinda/working-with-me
+
+- Research comparable products and flows before designing anything.
+- Content and structure first. Do not jump to visual layout.
+- Information architecture is the method. Map the flow before the screen.
+- One task at a time. Give me the next right thing, not a ten step plan.
+- Be direct and have a point of view. Give a recommendation, not five options.
+- Do not praise work to be nice. Say what is good and what needs work.
+- No dark patterns, no engagement mechanics, no jargon. Not negotiable.
+- All writing goes through the `unslop` skill. No em dashes in anything you generate.
+
 ## Gotchas
 
 - TMDB watch-provider IDs: one service can have several (ad tiers, rebrands). The map
