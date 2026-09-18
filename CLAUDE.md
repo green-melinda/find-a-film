@@ -61,6 +61,19 @@ for reference).
 - **No dark patterns, no engagement mechanics.** The app's job is to end the session
   with a decision, not extend it.
 
+## Writing
+
+Copy is the design here, so every word in this repo goes through the `unslop` skill in
+`.claude/skills/unslop/SKILL.md`. That covers UI copy, the readme, commit messages, and PR
+descriptions. Apply it without being asked.
+
+The skill is a copy. The source of truth is `.claude/skills/unslop/SKILL.md` in
+[working-with-me](https://github.com/green-melinda/working-with-me). Edit it there, then re-sync
+with `./install.sh /path/to/find-a-film` from that repo. Do not edit the copy in place.
+
+One known conflict: the skill bans em dashes and this file is full of them, along with the app's
+own copy. The ban applies to new writing. Changing the existing voice is a separate decision.
+
 ## Gotchas
 
 - TMDB watch-provider IDs: one service can have several (ad tiers, rebrands). The map
