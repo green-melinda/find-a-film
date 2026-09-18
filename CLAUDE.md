@@ -63,13 +63,12 @@ for reference).
 
 ## Writing
 
-Copy is the design here, so every word in this repo goes through the `unslop` skill in
-`.claude/skills/unslop/SKILL.md`. That covers UI copy, the readme, commit messages, and PR
-descriptions. Apply it without being asked.
+Copy is the design here, so every word in this repo goes through the `unslop` skill. That covers
+UI copy, the readme, commit messages, and PR descriptions. Apply it without being asked.
 
-The skill is a copy. The source of truth is `.claude/skills/unslop/SKILL.md` in
-[working-with-me](https://github.com/green-melinda/working-with-me). Edit it there, then re-sync
-with `./install.sh /path/to/find-a-film` from that repo. Do not edit the copy in place.
+The skill loads from Melinda's Claude account, so it is already active in every session and this
+repo does not carry a copy. The rules live at `.claude/skills/unslop/SKILL.md` in
+[working-with-me](https://github.com/green-melinda/working-with-me), which is where to edit them.
 
 The em dash ban applies to writing Claude generates. The em dashes already in this file and in
 the app's copy are Melinda's and they stay.
